@@ -21,6 +21,10 @@
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
+            display: block;
+            width: 300px;
+            height: 200px;
+            margin: 10px;
         }
 
         button {
@@ -48,6 +52,11 @@
     <form action="/download">
         <h1>Clique no botão abaixo para realizar o download do arquivo</h1>
         <button type="submit">Download</button>
+    </form>
+    <br/>
+    <form action="/upload">
+        <h1>Clique no botão abaixo para realizar o envio para o S3 da AWS</h1>
+        <button type="submit">ENVIAR</button>
     </form>
 </body>
 

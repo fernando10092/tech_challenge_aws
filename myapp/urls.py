@@ -21,4 +21,5 @@ from . import views
 urlpatterns = [
     path('', views.View, name='home'),
     path('download/', views.Scraper, name='download'),
+    path('upload/', views.Upload, name='upload'),
 ]
