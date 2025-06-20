@@ -9,16 +9,16 @@ def getData():
 
     dados = response.json()
 
-    #data = datetime.now().strftime("%Y-%m-%d")
     data = dados["header"]["date"]
-    text_data = str(data)
-    text_data = text_data.replace("/", "-")
+    text_data = str(data).replace("/", "-")
 
     lista = dados["results"]
+    df = pd.DataFrame(lista)
 
-    print(lista)
+    # Salvar em formato Parquet
+    df.to_parquet(f"data_extract/{text_data}.parquet", index=False)
 
-    return pd.DataFrame(lista).to_excel(f'{text_data}.xlsx', index=False)
+    # Salvar em Excel (comentado caso queira usar)
+    # df.to_excel(f'{text_data}.xlsx', index=False)
 
-    #with open(f'{data}.csv', mode="w", encoding="utf-8") as arquivo:
-    #    arquivo.write(response.text)
+    return df

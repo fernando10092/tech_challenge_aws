@@ -53,11 +53,15 @@
         <h1>Clique no botão abaixo para realizar o download do arquivo</h1>
         <button type="submit">Download</button>
     </form>
-    <br/>
-    <form action="/upload">
+    <br />
+    <form action="/upload/" method="POST">
+        {% csrf_token %}
+        <p>Nome do Arquivo a ser enviado</p>
+        <input name="inpName" placeholder="XX-XX-XX" />
         <h1>Clique no botão abaixo para realizar o envio para o S3 da AWS</h1>
         <button type="submit">ENVIAR</button>
     </form>
+
 </body>
 
 </html>
