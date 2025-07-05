@@ -9,16 +9,19 @@ def getData():
 
     dados = response.json()
 
-    data = dados["header"]["date"]
-    text_data = str(data).replace("/", "-")
+    data = dados["header"]["date"]  # Ex: "20/06/2025"
+    text_data = str(data).replace("/", "-")  # Para nome do arquivo
 
     lista = dados["results"]
     df = pd.DataFrame(lista)
+
+    # ✅ Adiciona a coluna "data_coleta" com a data
+    df["data_coleta"] = data
 
     # Salvar em formato Parquet
     df.to_parquet(f"data_extract/{text_data}.parquet", index=False)
 
     # Salvar em Excel (comentado caso queira usar)
-    # df.to_excel(f'{text_data}.xlsx', index=False)
+    df.to_excel(f'data_extract/{text_data}.xlsx', index=False)
 
     return df
